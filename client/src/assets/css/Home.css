@@ -1,0 +1,86 @@
+
+/*.home-pages  {*/
+/*    display: flex;*/
+
+/*}*/
+
+/*.welcome-text {*/
+/*    width: 30em;*/
+/*    background-color: var(--neutral-color);*/
+/*    color: whitesmoke;*/
+/*    padding: 1rem;*/
+/*    margin-top: 1rem;*/
+/*}*/
+/*.flow-content > * + * {*/
+/*    margin-top: 1rem;*/
+/*}*/
+
+/*
+  Giving various sections of your page this utility class
+  will ensure a nice padding around the contents.
+*/
+.container {
+    padding: 2rem;
+}
+
+/* My additions */
+.home-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 70vh;
+    max-height: 100vh;
+    /*width:70%;*/
+}
+
+.welcome-text {
+    width: 30em;
+    /*height: 6em;*/
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.625rem;
+}
+
+.category-images {
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-now {
+    display: flex;
+    flex-direction: column-reverse;
+    /*justify-content: flex-end;*/
+    flex: auto;
+    padding: 1rem;
+}
+
+.shop-now-button,
+.shop-now-button:visited {
+    /*height: 80px;*/
+    /*width: 160px;*/
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--neutral-color);
+    text-decoration: none;
+    cursor: pointer;
+    font-family: var(--button-font-family), serif;
+    border-radius: 0.625rem;
+    padding: 10px 10px 10px 10px;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active {
+    background: var(--card-background-color);
+    color: var(--default-text-color);
+}
+
+.offer-banner {
+    display: flex;
+    flex-direction: row;
+}
+
+.offer-tag {
+    display: flex;
+    flex-direction: row;
+    margin-top: -6em;
+    margin-left: 1em;
+}

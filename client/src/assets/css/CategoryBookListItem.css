@@ -1,0 +1,72 @@
+
+/* mine */
+.book-box {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--card-background-color);
+    padding: 0.5em;
+}
+
+.book-title {
+    font-weight: bold;
+}
+
+.book-author {
+    font-style: italic;
+}
+
+.book-image {
+    height: 200px;
+    width: 120px;
+}
+
+.read-now-button {
+    background-color: rgba(50,62,58, 0.8); /*rgba version of var(--secondary-background-color) for alpha */  /*#0008;*/
+    color: var(--neutral-color); /*white;*/
+    transform: translateY(-1.6em);
+    margin-bottom: -0.6em;
+    text-align: center;
+    padding: 0.5em;
+    border-radius: 1.025rem;
+    width: 120px;
+}
+
+.read-now-button:hover {
+    cursor: pointer;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+.book-price {
+    font-style: italic;
+}
+
+.addToCartButtonRow {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.addToCartButton,
+.addToCartButton {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--neutral-color);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    font-family: var(--button-font-family), serif;
+    border-radius: 0.625rem;
+    align-self: self-end;
+}
+
+.addToCartButton:hover,
+.addToCartButton:active {
+    background: var(--primary-background-color);
+    color: var(--neutral-color);
+    cursor: pointer;
+}

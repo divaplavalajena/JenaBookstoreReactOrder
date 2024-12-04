@@ -1,0 +1,63 @@
+.page-empty-state {
+    margin: auto;
+    min-height: 70vh;
+    /*max-height: 100vh;*/
+}
+
+.header-text {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0.5em;
+    font-family: var(--title-font-family), serif;
+}
+
+.cart-page {
+    align-content: center;
+}
+
+.cartActionButtonRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+    padding: 0.1em 1em 1em 1em;
+}
+
+.cartActionButton,
+.cartActionButton {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--neutral-color);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    font-family: var(--button-font-family), serif;
+    border-radius: 0.625rem;
+    align-self: self-end;
+}
+
+.cartActionButton:hover,
+.cartActionButton:active {
+    background: var(--primary-color-dark);
+    color: var(--neutral-color);
+    cursor: pointer;
+}
+
+.clearCartButton,
+.clearCartButton {
+    display: inline-block;
+    background: var(--primary-color-dark);
+    color: var(--neutral-color);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    font-family: var(--button-font-family), serif;
+    border-radius: 0.625rem;
+    align-self: self-end;
+}
+
+.clearCartButton:hover,
+.clearCartButton:active {
+    background: var(--card-background-color);
+    color: var(--default-text-color);
+    cursor: pointer;
+}

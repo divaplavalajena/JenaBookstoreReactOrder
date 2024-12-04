@@ -1,0 +1,20 @@
+
+.category-image-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.category-image-items-li {
+    text-align: center;
+    cursor: pointer;
+}
+
+.category-image-items-div {
+    padding: 0.5em 0;
+    background: rgba(50,62,58, 0.5); /* last # is percent opacity */
+    color: var(--neutral-color); /*white;*/
+    transform: translateY(-2.25em);
+    margin-bottom: -2em;
+}

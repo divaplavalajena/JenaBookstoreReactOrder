@@ -1,0 +1,42 @@
+
+/* mine */
+.header-dropdown {
+    position: relative;
+}
+
+.categories-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-background-color);
+    color: var(--default-text-color);
+}
+
+.header-dropdown ul {
+    background-color: var(--card-background-color);
+    color: var(--default-text-color);
+    display: none;
+}
+
+.header-dropdown li {
+    padding: 0.25em 0.5em;
+}
+
+.header-dropdown a {
+    color: var(--default-text-color);
+    text-decoration: none;
+}
+
+.header-dropdown li:hover {
+    background: lightgray;
+    transition: all 1s ease-in-out;
+}
+
+.header-dropdown:hover ul {
+    display: block;
+    position: absolute;
+    min-width: 8em;
+    z-index: 1;
+    cursor: pointer;
+}

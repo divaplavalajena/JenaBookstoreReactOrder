@@ -1,0 +1,38 @@
+
+/* mine */
+.category-book-list {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    /*min-height: 100vh;*/
+    min-height: 70vh;
+    max-height: 100vh;
+}
+
+#book-boxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+    gap: 1em;
+}
+.category-buttons {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    background-color: var(--neutral-color);
+    padding: 0.5em;
+}
+
+.button.selected-category-button {
+    background-color: var(--primary-color);
+    color: var(--neutral-color)
+}
+
+.button.unselected-category-button,
+.button.unselected-category-button:visited {
+    background-color: var(--neutral-color);
+}
+
+.button.unselected-category-button:hover,
+.button.unselected-category-button:active {
+    background-color: var(--primary-color);
+}

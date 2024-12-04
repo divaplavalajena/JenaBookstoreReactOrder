@@ -1,0 +1,63 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+ext {
+    junitVersion = '5.9.2'
+}
+
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+
+dependencies {
+    compileOnly('jakarta.json.bind:jakarta.json.bind-api:3.0.0')
+    compileOnly('jakarta.json:jakarta.json-api:2.1.1')
+    compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
+    implementation('org.glassfish.jersey.containers:jersey-container-servlet:3.1.1')
+    implementation('org.glassfish.jersey.media:jersey-media-json-jackson:3.1.1')
+    implementation('org.glassfish.jersey.inject:jersey-hk2:3.1.1')
+    implementation('mysql:mysql-connector-java:8.0.33')
+
+
+    // For JSON serialization/deserialization
+    implementation('com.fasterxml.jackson.core:jackson-core:2.15.1')
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.15.1')
+    implementation('com.fasterxml.jackson.core:jackson-annotations:2.15.1')
+    implementation('com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.15.1')
+    implementation('com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.1')
+
+
+    // For viewing the database using a JSP
+    implementation('jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api:3.0.0')
+    implementation('org.glassfish.web:jakarta.servlet.jsp.jstl:3.0.1')
+
+
+    // JAX-B dependencies for JDK 9+
+    implementation('javax.xml.bind:jaxb-api:2.3.1')
+    implementation('com.sun.xml.bind:jaxb-core:2.2.11')
+    implementation('com.sun.xml.bind:jaxb-impl:2.2.11')
+    implementation('javax.activation:activation:1.1.1')
+
+
+    // For testing
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+
+test {
+    useJUnitPlatform()
+}
