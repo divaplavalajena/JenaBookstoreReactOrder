@@ -17,6 +17,7 @@ export interface BookItem {
   isFeatured: boolean;
   rating: number;
   imagePath: string;
+  categoryId: number;
 }
 
 export interface CategoryItem {

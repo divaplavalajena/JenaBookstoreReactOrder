@@ -11,7 +11,7 @@ function CategoryBookList() {
     const {name} = useParams();
     const [books, setBooks]  = useState([]);
     useEffect(() => {
-        axios.get(`http://webdev.cs.vt.edu:8080/JenaBookstoreReactValidate/api/categories/name/${name}/books`)
+        axios.get(`http://localhost:8080/JenaBookstoreReactOrder/api/categories/name/${name}/books`)
             .then((result) => {setBooks(result.data )
                 console.log(result.data)
             })
@@ -26,7 +26,7 @@ function CategoryBookList() {
           <ul id="book-boxes">
               {
                   books.map((book:BookItem) =>
-                  <CategoryBookListItem key={book.bookId} bookId={book.bookId} isPublic={book.isPublic} price={book.price} title={book.title} author={book.author} description={book.description} isFeatured={book.isFeatured} rating={book.rating} imagePath={book.imagePath}/>
+                  <CategoryBookListItem key={book.bookId} bookId={book.bookId} isPublic={book.isPublic} price={book.price} title={book.title} author={book.author} description={book.description} isFeatured={book.isFeatured} rating={book.rating} imagePath={book.imagePath} categoryId={book.categoryId}/>
                   )}
 
           </ul>

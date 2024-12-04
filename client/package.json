@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://webdev.cs.vt.edu:8080/JenaBookstoreReactValidate",
+  "homepage": "http://localhost:8080/JenaBookstoreReactOrder",
   "proxy": "http://localhost:8080",
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.6.0",

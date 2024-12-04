@@ -13,7 +13,7 @@ import Confirmation from "./components/Confirmation";
 
 function App() {
     return (
-        <Router basename ={"JenaBookstoreReactValidate"}>
+        <Router basename ={"JenaBookstoreReactOrder"}>
             <AppHeader />
             <Routes>home
                 <Route path="/" element={<Home />} />
