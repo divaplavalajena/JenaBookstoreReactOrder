@@ -11,6 +11,7 @@ import {CartTypes} from "../reducers/CartReducer";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlusCircle} from "@fortawesome/free-solid-svg-icons/faPlusCircle";
 import {faMinusCircle} from "@fortawesome/free-solid-svg-icons/faMinusCircle";
+import axios from "axios";
 
 
 function CheckoutPage()
@@ -68,14 +69,34 @@ function CheckoutPage()
           phoneError.length === 0 &&
           emailError.length === 0 &&
           ccNumberError.length === 0 &&
-          formData.name.length != 0 &&
-          formData.address.length != 0 &&
-          formData.phone.length != 0 &&
-          formData.email.length != 0 &&
-          formData.ccNumber.length != 0;
+          formData.name.length !== 0 &&
+          formData.address.length !== 0 &&
+          formData.phone.length !== 0 &&
+          formData.email.length !== 0 &&
+          formData.ccNumber.length !== 0;
    }
 
    // TO DO placeOrder function comes here. Needed for project 9 (not 8)
+   const placeOrder =  async (customerForm: CustomerForm) =>  {
+
+      const order = { customerForm: customerForm, cart:{itemArray:cart} };
+
+      const orders = JSON.stringify(order);
+      console.log(orders);     //you can uncomment this to see the orders JSON on the console
+      const url = `api/orders`; //'api/orders';
+      const orderDetails: OrderDetails = await axios.post(url, orders,
+          {headers: {
+                "Content-Type": "application/json",
+             }
+          })
+          .then((response) => {
+             dispatch({type: CartTypes.CLEAR});
+             return response.data;
+          })
+          .catch((error)=>console.log(error));
+      console.log("order details: ", orderDetails);
+      return orderDetails;
+   }
 
    function handleInputChange(event:ChangeEvent<HTMLInputElement|HTMLSelectElement>) {
 
@@ -143,21 +164,30 @@ function CheckoutPage()
    }
 
   // TO DO submitOrder function comes here. See the project Spec
-   function submitOrder(event:FormEvent) {
+   async function submitOrder(event:FormEvent) {
       event.preventDefault();
       console.log("Submit order");
-      const isFormCorrect = isValidForm();
+      const isFormCorrect =  isValidForm();
+      console.log(isFormCorrect);
       if (!isFormCorrect) {
-         setCheckoutStatus("ERROR");     //Note that checkoutStatus is a state of the CheckoutPage
-      }
-      else {
+         setCheckoutStatus("ERROR");
+      } else {
          setCheckoutStatus("PENDING");
-         setTimeout(() => {
+         const orders = await placeOrder({
+            name: formData.name,
+            address: formData.address,
+            phone: formData.phone,
+            email: formData.email,
+            ccNumber: formData.ccNumber,
+            ccExpiryMonth: formData.ccExpiryMonth,
+            ccExpiryYear: formData.ccExpiryYear,
+         })
+         if(orders) {
             setCheckoutStatus("OK");
-            setTimeout(() => {
-               navigate('/confirmation') ; // please read about the useNavigate() hook of the react router
-            }, 1000);
-         }, 1000);
+            navigate('/confirmation');}
+         else{
+            console.log("Error placing order");
+         }
       }
    }
 

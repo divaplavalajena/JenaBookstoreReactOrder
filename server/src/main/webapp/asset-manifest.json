@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/JenaBookstoreReactOrder/static/css/main.85f29321.css",
-    "main.js": "/JenaBookstoreReactOrder/static/js/main.e3e30a0b.js",
+    "main.js": "/JenaBookstoreReactOrder/static/js/main.bd076c69.js",
     "static/js/453.258b012d.chunk.js": "/JenaBookstoreReactOrder/static/js/453.258b012d.chunk.js",
     "static/media/Dune-Book-Cover.jpg": "/JenaBookstoreReactOrder/static/media/Dune-Book-Cover.6052a7b5f12f6e882ac4.jpg",
     "static/media/book-nook-logo.png": "/JenaBookstoreReactOrder/static/media/book-nook-logo.863aa205b94168295f7b.png",
@@ -35,11 +35,11 @@
     "static/media/The-Martian.jpeg": "/JenaBookstoreReactOrder/static/media/The-Martian.c70849032c8bce5f72f6.jpeg",
     "index.html": "/JenaBookstoreReactOrder/index.html",
     "main.85f29321.css.map": "/JenaBookstoreReactOrder/static/css/main.85f29321.css.map",
-    "main.e3e30a0b.js.map": "/JenaBookstoreReactOrder/static/js/main.e3e30a0b.js.map",
+    "main.bd076c69.js.map": "/JenaBookstoreReactOrder/static/js/main.bd076c69.js.map",
     "453.258b012d.chunk.js.map": "/JenaBookstoreReactOrder/static/js/453.258b012d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.85f29321.css",
-    "static/js/main.e3e30a0b.js"
+    "static/js/main.bd076c69.js"
   ]
 }

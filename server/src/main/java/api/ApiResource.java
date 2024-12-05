@@ -6,6 +6,9 @@ import business.category.CategoryDao;
 import business.book.Book;
 import business.book.BookDao;
 
+import business.order.OrderDetails;
+import business.order.OrderForm;
+import business.order.OrderService;
 import jakarta.servlet.http.HttpServletRequest;
 //import jakarta.javax.ws.rs.*;
 import jakarta.ws.rs.*;
@@ -19,6 +22,7 @@ public class ApiResource {
 
     private final BookDao bookDao = ApplicationContext.INSTANCE.getBookDao();
     private final CategoryDao categoryDao = ApplicationContext.INSTANCE.getCategoryDao();
+    private final OrderService orderService = ApplicationContext.INSTANCE.getOrderService();
 
     @GET
     @Path("categories")
@@ -145,4 +149,26 @@ public class ApiResource {
             throw new ApiException("Books lookup by categoryName and then category-id failed", e);
         }
     }
+
+    @POST
+    @Path("orders")
+    @Consumes(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
+    @Produces(jakarta.ws.rs.core.MediaType.APPLICATION_JSON)
+    public OrderDetails placeOrder(OrderForm orderForm) {
+
+        try {
+
+            long orderId = orderService.placeOrder(orderForm.getCustomerForm(), orderForm.getCart());
+            throw new ApiException.ValidationFailure("Transactions have not been implemented yet.");
+
+            // NOTE: MORE CODE PROVIDED NEXT PROJECT
+
+        } catch (ApiException e) {
+            // NOTE: all validation errors go through here
+            throw e;
+        } catch (Exception e) {
+            throw new ApiException("order placement failed", e);
+        }
+    }
+
 }
