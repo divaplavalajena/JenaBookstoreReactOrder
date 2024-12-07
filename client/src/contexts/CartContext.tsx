@@ -29,6 +29,7 @@ function CartContext ({ children }:PropsWithChildren<{}>)  {
             }
         },
     );
+    console.log('cart before JSON stringify', cart); // category NOT HERE NOW??
     localStorage.setItem(storageKey, JSON.stringify(cart));
     return (
         <CartStore.Provider value ={{cart, dispatch}}>{children}</CartStore.Provider>

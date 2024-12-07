@@ -4,15 +4,9 @@ import api.ApiException;
 import business.book.Book;
 import business.book.BookDao;
 import business.cart.ShoppingCart;
-import business.category.Category;
 import business.customer.CustomerForm;
 
-import java.time.DateTimeException;
 import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoField;
-import java.time.temporal.TemporalAccessor;
-import java.util.Date;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
@@ -73,10 +67,9 @@ public class DefaultOrderService implements OrderService {
 
 		// TODO: Validation checks for address, phone, email, ccNumber
 
-		if (expiryDateIsInvalid(customerForm.getCcExpiryMonth(), customerForm.getCcExpiryYear())) {
+		if (!expiryDateIsInvalid(customerForm.getCcExpiryMonth(), customerForm.getCcExpiryYear())) {
 			throw new ApiException.ValidationFailure("Invalid expiry date");
 		}
-		logger.info("____ check failed, throwing ___");
 	}
 
 	private boolean expiryDateIsInvalid(String ccExpiryMonth, String ccExpiryYear) {
@@ -86,7 +79,7 @@ public class DefaultOrderService implements OrderService {
 		int expiryYear = Integer.parseInt(ccExpiryYear);
 		int expiryMonth = Integer.parseInt(ccExpiryMonth);
 		YearMonth yearMonth = YearMonth.of(expiryYear, expiryMonth);
-        return !yearMonth.isBefore(YearMonth.now());
+        return yearMonth.isBefore(YearMonth.now());
 	}
 
 	private boolean phoneIsValid(String phone) {

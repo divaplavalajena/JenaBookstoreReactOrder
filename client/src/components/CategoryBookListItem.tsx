@@ -7,6 +7,8 @@ import {CartStore} from "../contexts/CartContext";
 function CategoryBookListItem(book:BookItem) {
     const {dispatch} = useContext(CartStore);
     const addBookToCart = () => {
+        // console.log("-- CategoryId --")
+        // console.log(book.categoryId)
         dispatch({ type: CartTypes.ADD, item:book, id: book.bookId });
     };
 return (

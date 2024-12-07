@@ -27,6 +27,8 @@ export const cartReducer = (state:ShoppingCartItem[], action:AppActions) => {
                         ? { ...cartItem, quantity: cartItem.quantity + 1 }
                         : cartItem
                 );
+            // console.log("-- categoryId --");
+            // console.log(action.item.categoryId);
             return [
                 ...state,
                 {id:action.item.bookId, book:action.item, quantity: 1 }

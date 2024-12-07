@@ -44,7 +44,7 @@ public class ShoppingCartItem {
 	}
 
 	@JsonIgnore
-	public long getBookPrice() {
+	public int getBookPrice() {
 		return bookForm.getPrice();
 	}
 

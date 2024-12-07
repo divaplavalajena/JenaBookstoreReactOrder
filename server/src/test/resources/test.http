@@ -15,7 +15,7 @@
 #  -H 'sec-ch-ua-platform: "macOS"'
 #  --data-raw '{"cart":{"itemArray":[{"book":{"bookId":1001,"title":"The Art of Computer Programming, Vol 1","author":"Donald Knuth","description":"","price":2499,"rating":0,"isPublic":true,"isFeatured":false,"categoryId":1001},"quantity":1}]},"customerForm":{"name":"Steve","address":"123 Main St","phone":"408 555 1212","email":"steve@email.com","ccNumber":"4444333322221111","ccExpiryMonth":4,"ccExpiryYear":2023}}'
 #  --compressed
-POST http://localhost:8080/JenaBookstoreOrder/api/orders
+POST http://localhost:8080/JenaBookstoreReactOrder/api/orders
 Accept: */*
 Accept-Language: en-US,en;q=0.9
 Cache-Control: max-age=0
@@ -40,7 +40,7 @@ Content-Type: application/json
 		  "title": "The Art of Computer Programming, Vol 1",
 		  "author": "Donald Knuth",
 		  "description": "",
-		  "price": 2499,
+		  "price": 17,
 		  "rating": 0,
 		  "isPublic": true,
 		  "isFeatured": false,
@@ -51,13 +51,13 @@ Content-Type: application/json
 	]
   },
   "customerForm": {
-	"name": "",
+	"name": "Jena",
 	"address": "123 Main St",
 	"phone": "408 555 1212",
 	"email": "steve@email.com",
 	"ccNumber": "4444333322221111",
 	"ccExpiryMonth": 4,
-	"ccExpiryYear": 2023
+	"ccExpiryYear": 2025
   }
 }
 
