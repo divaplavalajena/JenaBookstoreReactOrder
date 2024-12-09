@@ -25,4 +25,9 @@ public class BookstoreDbException extends RuntimeException {
             super(message, cause);
         }
     }
+
+    public static class BookstoreUpdateDbException extends BookstoreDbException {
+        public BookstoreUpdateDbException(String message) { super(message); }
+        public BookstoreUpdateDbException(String message, Throwable cause) { super(message, cause); }
+    }
 }

@@ -6,9 +6,8 @@ import business.category.CategoryDao;
 import business.book.Book;
 import business.book.BookDao;
 
-import business.order.OrderDetails;
-import business.order.OrderForm;
-import business.order.OrderService;
+import business.customer.CustomerDao;
+import business.order.*;
 import jakarta.servlet.http.HttpServletRequest;
 //import jakarta.javax.ws.rs.*;
 import jakarta.ws.rs.*;
@@ -23,6 +22,9 @@ public class ApiResource {
     private final BookDao bookDao = ApplicationContext.INSTANCE.getBookDao();
     private final CategoryDao categoryDao = ApplicationContext.INSTANCE.getCategoryDao();
     private final OrderService orderService = ApplicationContext.INSTANCE.getOrderService();
+    private final OrderDao orderDao = ApplicationContext.INSTANCE.getOrderDao();
+    private final LineItemDao lineItemDao = ApplicationContext.INSTANCE.getLineItemDao();
+    private final CustomerDao customerDao = ApplicationContext.INSTANCE.getCustomerDao();
 
     @GET
     @Path("categories")
@@ -159,9 +161,11 @@ public class ApiResource {
         try {
 
             long orderId = orderService.placeOrder(orderForm.getCustomerForm(), orderForm.getCart());
-            throw new ApiException.ValidationFailure("Transactions have not been implemented yet.");
-
-            // NOTE: MORE CODE PROVIDED NEXT PROJECT
+            if (orderId > 0) {
+                return orderService.getOrderDetails(orderId);
+            } else {
+                throw new ApiException.ValidationFailure("Unknown error occurred");
+            }
 
         } catch (ApiException e) {
             // NOTE: all validation errors go through here

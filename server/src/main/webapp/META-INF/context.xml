@@ -15,5 +15,5 @@
               logAbandoned="true"
               minEvictableIdleTimeMillis="300000"
               timeBetweenEvictionRunsMillis="300000"
-              url="jdbc:mysql://webdev.cs.vt.edu:3306/JenaBookstoreDB"/>
+              url="jdbc:mysql://localhost:3306/JenaBookstoreDB"/>
 </Context>
