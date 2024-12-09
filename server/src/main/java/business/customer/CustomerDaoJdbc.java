@@ -5,6 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,7 +49,12 @@ public class CustomerDaoJdbc implements CustomerDao {
             statement.setString(3, phone);
             statement.setString(4, email);
             statement.setString(5, ccNumber);
-            statement.setDate(6, (java.sql.Date) ccExpDate);
+            Instant instantExpDate = ccExpDate.toInstant();
+            ZoneId zoneId = ZoneId.of ( "America/Montreal" );
+            ZonedDateTime zdt = ZonedDateTime.ofInstant ( instantExpDate , zoneId );
+            LocalDate localDate = zdt.toLocalDate();
+            java.sql.Date sqlDate = java.sql.Date.valueOf( localDate );
+            statement.setDate(6, sqlDate);
             int affected = statement.executeUpdate();
             if (affected != 1) {
                 throw new BookstoreUpdateDbException("Failed to insert a customer, affected row count = " + affected);

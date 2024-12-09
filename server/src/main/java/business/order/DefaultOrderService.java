@@ -13,6 +13,7 @@ import business.customer.CustomerForm;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.Year;
 import java.time.YearMonth;
 import java.util.Calendar;
 import java.util.Date;
@@ -71,12 +72,14 @@ public class DefaultOrderService implements OrderService {
 	}
 
 	private Date getCardExpirationDate(String monthString, String yearString) {
-		int expiryYear = Integer.parseInt(monthString);
-		int expiryMonth = Integer.parseInt(yearString);
+		int expiryYear = Integer.parseInt(yearString);
+		int expiryMonth = Integer.parseInt(monthString);
 		Calendar calendar = Calendar.getInstance();
 		calendar.clear();
-		calendar.set(Calendar.MONTH, expiryYear);
-		calendar.set(Calendar.YEAR, expiryMonth);
+		calendar.set(Calendar.MONTH, expiryMonth - 1);
+		Year currentYear = Year.now();
+		Year futureYear = currentYear.plusYears(expiryYear - 1);
+		calendar.set(Calendar.YEAR, futureYear.getValue());
 		Date date = calendar.getTime();
 		return date; //new Date(); // DONE Implement this correctly
 	}
