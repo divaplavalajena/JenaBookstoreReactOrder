@@ -10,6 +10,7 @@ import {
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import Confirmation from "./components/Confirmation";
+import ConfirmationPage from "./components/ConfirmationPage";
 
 function App() {
     return (
@@ -22,7 +23,7 @@ function App() {
                 </Route>
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="/confirmation" element={<Confirmation />} />
+                <Route path="/confirmation" element={<ConfirmationPage />} />
                 <Route path="*" element={<div>Page Not Found</div>} />
             </Routes>
             <AppFooter />

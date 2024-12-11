@@ -1,5 +1,4 @@
 import {ShoppingCartItem, BookItem} from "../types";
-import {Dispatch, ReducerAction} from "react";
 
 export const CartTypes = {
     ADD: 'ADD',

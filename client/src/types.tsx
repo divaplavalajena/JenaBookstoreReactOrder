@@ -85,15 +85,35 @@ export interface Order {
   customerId: number;
 }
 
+// export interface OrderDetails {
+//   order: Order;
+//   customer: CustomerForm;
+//   books: BookItem[];
+// }
 export interface OrderDetails {
-  order: Order;
-  customer: CustomerForm;
   books: BookItem[];
+  customer: Customer;
+  lineItems: LineItem[];
+  order: Order;
 }
-
 export interface ServerErrorResponse {
   reason: string;
   message: string;
   fieldName: string;
   error: boolean;
 }
+
+export interface LineItem {
+  bookId: number;
+  orderId: number;
+  quantity: number;
+}
+export interface Customer {
+  customerName: string;
+  address: string;
+  phone: string;
+  email: string;
+  ccNumber: string;
+  ccExpDate: number;
+}
+

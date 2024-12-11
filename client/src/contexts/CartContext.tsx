@@ -16,8 +16,6 @@ export const storageKey = 'cart';
 // the rest of the code comes here
 function CartContext ({ children }:PropsWithChildren<{}>)  {
 
-    // @ts-ignore
-    // const [cart, dispatch] = useReducer(cartReducer, initialCartState);
     const [cart, dispatch] =useReducer(cartReducer, initialCartState,
         (initialState) => {
             try {
@@ -29,7 +27,7 @@ function CartContext ({ children }:PropsWithChildren<{}>)  {
             }
         },
     );
-    console.log('cart before JSON stringify', cart); // category NOT HERE NOW??
+    // console.log('cart before JSON stringify', cart); // category NOT HERE NOW??
     localStorage.setItem(storageKey, JSON.stringify(cart));
     return (
         <CartStore.Provider value ={{cart, dispatch}}>{children}</CartStore.Provider>

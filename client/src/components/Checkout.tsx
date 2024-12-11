@@ -3,7 +3,7 @@
 import  "../assets/css/checkout.css"
 
 import {asDollarsAndCents, isCreditCard, isMobilePhone, isvalidEmail} from '../utils';
-import {BookItem, CustomerForm, months, OrderDetails,  years} from "../types";
+import {BookItem, CustomerForm, months, OrderDetails, ShoppingCartItem, years} from "../types";
 import {CartStore} from "../contexts/CartContext";
 import {ChangeEvent, FormEvent, useContext, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
@@ -12,6 +12,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlusCircle} from "@fortawesome/free-solid-svg-icons/faPlusCircle";
 import {faMinusCircle} from "@fortawesome/free-solid-svg-icons/faMinusCircle";
 import axios from "axios";
+import {OrderDetailsStore} from "../contexts/OrderDetailsContext";
+import {OrderDetailsTypes} from "../reducers/OrderDetailsReducer";
 
 
 function CheckoutPage()
@@ -76,6 +78,10 @@ function CheckoutPage()
           formData.ccNumber.length !== 0;
    }
 
+   const {orderDetails, dispatchOrder} = useContext(OrderDetailsStore);
+   const setOrderDetails = (item: OrderDetails) => {
+      dispatchOrder({ type: OrderDetailsTypes.UPDATE, item:item });
+   };
    // TO DO placeOrder function comes here. Needed for project 9 (not 8)
    const placeOrder =  async (customerForm: CustomerForm) =>  {
 
@@ -90,7 +96,7 @@ function CheckoutPage()
              }
           })
           .then((response) => {
-             dispatch({type: CartTypes.CLEAR});
+             dispatch({type: CartTypes.CLEAR}); // TODO don't clear here, clear somewhere on the confirmation page
              return response.data;
           })
           .catch((error)=>console.log(error));
@@ -184,6 +190,7 @@ function CheckoutPage()
          })
          if(orders) {
             setCheckoutStatus("OK");
+            dispatchOrder({item: orders, type: OrderDetailsTypes.UPDATE })
             navigate('/confirmation');}
          else{
             console.log("Error placing order");

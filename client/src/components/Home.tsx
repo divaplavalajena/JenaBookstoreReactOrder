@@ -3,8 +3,13 @@ import HomeCategoryList from './HomeCategoryList';
 import '../assets/css/global.css';
 import '../assets/css/Home.css'
 import {Link} from "react-router-dom";
+import {OrderDetailsTypes} from "../reducers/OrderDetailsReducer";
+import {useContext} from "react";
+import {OrderDetailsStore} from "../contexts/OrderDetailsContext";
 
 function Home() {
+    const {dispatchOrder} = useContext(OrderDetailsStore);
+    dispatchOrder({ type: OrderDetailsTypes.CLEAR });
     return (
         <div className="container">
             <div className="home-page">

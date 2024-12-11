@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CategoryContext from './contexts/CategoryContext';
 import CartContext from "./contexts/CartContext";
+import OrderDetailsContext from "./contexts/OrderDetailsContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,11 +13,13 @@ const root = ReactDOM.createRoot(
 root.render(
 
     <React.StrictMode>
-        <CartContext>
-            <CategoryContext>
-                <App />
-            </CategoryContext>
-        </CartContext>
+        <OrderDetailsContext>
+            <CartContext>
+                <CategoryContext>
+                    <App />
+                </CategoryContext>
+            </CartContext>
+        </OrderDetailsContext>
     </React.StrictMode>
 
 );

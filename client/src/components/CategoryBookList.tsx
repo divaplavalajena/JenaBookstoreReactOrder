@@ -3,11 +3,15 @@ import '../assets/css/CategoryBookList.css';
 import CategoryBookListItem from './CategoryBookListItem';
 import CategoryNav from './CategoryNav';
 import {BookItem} from "../types";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
+import {OrderDetailsStore} from "../contexts/OrderDetailsContext";
+import {OrderDetailsTypes} from "../reducers/OrderDetailsReducer";
 
 function CategoryBookList() {
+    const {dispatchOrder} = useContext(OrderDetailsStore);
+    dispatchOrder({ type: OrderDetailsTypes.CLEAR });
     const {name} = useParams();
     const [books, setBooks]  = useState([]);
     useEffect(() => {
