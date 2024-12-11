@@ -126,40 +126,47 @@ public class DefaultOrderService implements OrderService {
 		String ccNumber = customerForm.getCcNumber();
 
 		if (name == null || name.length() < 4 || name.length() > 45) {
-			throw new ApiException.ValidationFailure(name, "Invalid name field");
+			throw new ApiException.ValidationFailure("name", "Invalid name field");
 		}
 
 		if (address == null || address.length() < 4 || address.length() > 45) {
-			throw new ApiException.ValidationFailure(address, "Invalid address field");
+			throw new ApiException.ValidationFailure("address", "Invalid address field");
 		}
 
 		if (phone == null || !phoneIsValid(phone)) {
-			throw new ApiException.ValidationFailure(phone, "Invalid phone field");
+			throw new ApiException.ValidationFailure("phone", "Invalid phone field");
 		}
 
 		if (!emailIsValid(email)) {
-			throw new ApiException.ValidationFailure(email, "Invalid email field");
+			throw new ApiException.ValidationFailure("email", "Invalid email field");
 		}
 
 		if (!ccNumberIsValid(ccNumber)) {
-			throw new ApiException.ValidationFailure(ccNumber,"Invalid ccNumber field");
+			throw new ApiException.ValidationFailure("ccNumber","Invalid ccNumber field");
 		}
 
 		// DONE Validation checks for address, phone, email, ccNumber
-
-		if (!expiryDateIsInvalid(customerForm.getCcExpiryMonth(), customerForm.getCcExpiryYear())) {
+		if (!expiryDateIsValid(customerForm.getCcExpiryMonth(), customerForm.getCcExpiryYear())) {
 			throw new ApiException.ValidationFailure("Invalid expiry date");
 		}
 	}
 
-	private boolean expiryDateIsInvalid(String ccExpiryMonth, String ccExpiryYear) {
-
+	private boolean expiryDateIsValid(String ccExpiryMonth, String ccExpiryYear) {
 		// DONE return true when the provided month/year is before the current month/yeaR
 		// HINT: Use Integer.parseInt and the YearMonth class
-		int expiryYear = Integer.parseInt(ccExpiryYear);
-		int expiryMonth = Integer.parseInt(ccExpiryMonth);
+		int expiryYear = 0;
+		int expiryMonth = 0;
+		try {
+			expiryYear = Integer.parseInt(ccExpiryYear);
+			expiryMonth = Integer.parseInt(ccExpiryMonth);
+		} catch (NumberFormatException e) {
+			return false;
+		}
+		if (expiryMonth <=1 || expiryMonth >= 12) {
+			return false;
+		}
 		YearMonth yearMonth = YearMonth.of(expiryYear, expiryMonth);
-        return yearMonth.isBefore(YearMonth.now());
+        return !yearMonth.isBefore(YearMonth.now());
 	}
 
 	private boolean phoneIsValid(String phone) {
@@ -182,6 +189,9 @@ public class DefaultOrderService implements OrderService {
 	}
 
 	private boolean ccNumberIsValid(String ccNumber) {
+		if (ccNumber == null) {
+			return false;
+		}
 		String ccNumberStripped = ccNumber.replaceAll("\\D", "");
 		return ccNumberStripped.length() >= 14 || ccNumberStripped.length() <= 16;
 	}
