@@ -76,10 +76,9 @@ public class DefaultOrderService implements OrderService {
 		int expiryMonth = Integer.parseInt(monthString);
 		Calendar calendar = Calendar.getInstance();
 		calendar.clear();
-		calendar.set(Calendar.MONTH, expiryMonth - 1);
-		Year currentYear = Year.now();
-		Year futureYear = currentYear.plusYears(expiryYear - 1);
-		calendar.set(Calendar.YEAR, futureYear.getValue());
+		calendar.set(Calendar.MONTH, expiryMonth - 1); // months are counted from 0 not 1
+		calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+		calendar.set(Calendar.YEAR, expiryYear);
 		Date date = calendar.getTime();
 		return date; //new Date(); // DONE Implement this correctly
 	}

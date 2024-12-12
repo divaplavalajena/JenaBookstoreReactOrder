@@ -253,7 +253,7 @@ form {
     border: 1px solid black;
     border-radius: 10px;
     padding: 20px;
-    height: 570px;
+    height: 650px;
 }
 form > div {
     display: flex;
@@ -280,8 +280,12 @@ form  .error {
     line-height: 15px;
     margin: 5px 0 0;
 }
+form .space {
+    height: 15px;
+    margin: 5px 0 0;
+}
 .checkoutStatusBox {
-    margin: 1em;
+    margin: 0 1em 1em 1em;
     padding: 1em;
     text-align: center;
 }

@@ -16,7 +16,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ShoppingCart {
 
-	private static final int SURCHARGE = 500;
+	private static final int SURCHARGE = 5;
 
 	@JsonProperty("itemArray")
 	private List<ShoppingCartItem> items;

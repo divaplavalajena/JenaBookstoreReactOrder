@@ -1,0 +1,47 @@
+.confirmation_table {
+    border: 1px black solid;
+    width: fit-content;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.confirmation_td {
+    display: table-cell;
+    padding: 0.5em 0.5em;
+    background-color: var(--card-background-color);
+    vertical-align: middle;
+}
+
+.confirmation_tr:nth-child(even) > td {
+    background-color: var(--secondary-color);
+}
+
+.confirmation_td:nth-child(1) {
+    text-align: left;
+}
+
+.confirmation_td:nth-child(2) {
+    text-align: center;
+}
+
+.confirmation_td:nth-child(3) {
+    text-align: right;
+}
+
+.checkout-text {
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-bottom:20px;
+}
+.checkout-view {
+    dsiplay: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.confirmation_total {
+    background-color: var(--primary-color);
+    color: var(--neutral-color);
+    padding: 0.5em 0.5em;
+}

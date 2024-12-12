@@ -13,13 +13,15 @@ const root = ReactDOM.createRoot(
 root.render(
 
     <React.StrictMode>
-        <OrderDetailsContext>
-            <CartContext>
-                <CategoryContext>
+
+        <CartContext>
+            <CategoryContext>
+                <OrderDetailsContext>
                     <App />
-                </CategoryContext>
-            </CartContext>
-        </OrderDetailsContext>
+                </OrderDetailsContext>
+            </CategoryContext>
+        </CartContext>
+
     </React.StrictMode>
 
 );

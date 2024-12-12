@@ -1,0 +1,13 @@
+
+.confirmationView {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em auto auto 4em;
+}
+ul {
+    text-align: left;
+}
+ul > li {
+    margin: 1em;
+}
