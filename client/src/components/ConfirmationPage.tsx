@@ -42,7 +42,6 @@ function ConfirmationPage() {
                 </div>
             </div>
                 :
-
                 <div className="confirmationView">
                     <ul>
                         <li>{confirmationNumber()}</li>

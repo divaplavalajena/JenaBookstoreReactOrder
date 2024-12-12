@@ -15,7 +15,7 @@ function CategoryBookList() {
     const {name} = useParams();
     const [books, setBooks]  = useState([]);
     useEffect(() => {
-        axios.get(`http://localhost:8080/JenaBookstoreReactOrder/api/categories/name/${name}/books`)
+        axios.get(`http://webdev.cs.vt.edu:8080/JenaBookstoreReactOrder/api/categories/name/${name}/books`)
             .then((result) => {setBooks(result.data )
                 console.log(result.data)
             })

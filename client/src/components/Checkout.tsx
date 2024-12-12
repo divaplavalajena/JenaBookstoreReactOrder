@@ -89,14 +89,14 @@ function CheckoutPage()
 
       const orders = JSON.stringify(order);
       console.log(orders);     //you can uncomment this to see the orders JSON on the console
-      const url = `http://localhost:8080/JenaBookstoreReactOrder/api/orders`; //'api/orders'; //webdev.cs.vt.edu
+      const url = `http://webdev.cs.vt.edu:8080/JenaBookstoreReactOrder/api/orders`; //'api/orders'; //webdev.cs.vt.edu
       const orderDetails: OrderDetails = await axios.post(url, orders,
           {headers: {
                 "Content-Type": "application/json",
              }
           })
           .then((response) => {
-             dispatch({type: CartTypes.CLEAR}); // TODO don't clear here, clear somewhere on the confirmation page
+             dispatch({type: CartTypes.CLEAR});
              return response.data;
           })
           .catch((error)=>console.log(error));
